@@ -15,7 +15,7 @@
 #       3: maksymalna długość hasła
 #
 #
-#   Przykładowe uruchomienie : bruteforce_hash.py  06c030da77d4399528f1b6c3fbc0bc79 6 4
+#   Przykładowe uruchomienie : python bruteforce_hash.py  06c030da77d4399528f1b6c3fbc0bc79 6 4
 
 
 import sys
