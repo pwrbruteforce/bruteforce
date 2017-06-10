@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from django.conf import settings
 from django.contrib.auth.models import User
 
@@ -8,19 +9,25 @@ class User(models.Model):
     #date_of_birth = models.DateField(blank=True, null=True)
 
 class Tasks(models.Model):
-    #user jest kluczem obcym w tablei TEST. Kazdy TEST musi byc przypisany do jakiegos usera
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    #krotki opis testu
-    discription = models.CharField(max_length= 250)
+    STATUS_CHOICE = (
+        ('running', 'Running'),     #zadanie w trakcie
+        ('paused', 'Paused'),       #zadanie zatrzymane
+        ('ended', 'Ended'),         #zadanie zakonczone
+        ('canceled','Canceled'),    #zadanie anulowane
+    )
 
-    #Automatycznie ustawia wartosci kiedy obiekt jest tworzony.
-    #It must be in ""YYYY-MM-DD HH:MM[:ss[.uuuuuu]][TZ] format."
-    start_date = models.DateTimeField(auto_now=True)
 
-    #status okreslajacy czy zadanie jest w toku czy nie. True dla zadania ktore jest w toku
-    #czyli jak tworzymy test to na starcie dostaje True
-    status = models.BooleanField(True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)        #user jest kluczem obcym w tablei TEST. Kazdy TEST musi byc przypisany do jakiegos usera
+    discription = models.CharField(max_length= 250)                 #krotki opis testu
+    created = models.DateTimeField(auto_now=True)                   #Automatycznie ustawia wartosci kiedy obiekt jest tworzony.
+    finished = models.DateTimeField(default=timezone.now)           #jesli zakonczone zadanie to wpisz czas zakonczenia
+    status = models.CharField(max_length=10, choices=STATUS_CHOICE, default='running')  #ustawienie statusu zadania
+
+    #Parametry do algorytmu Brutforce:
+    hasch = models.CharField(max_length=32)
+
+
 
 
 
