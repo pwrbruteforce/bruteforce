@@ -1,8 +1,27 @@
 {% extends "base.html" %}
 
-{% block title %}LOGGED-OUT{% endblock %}
-
 {% block content %}
-    <h1>Logged out</h1>
-    <p>You have been successfully logged out. You can <a href="{% url "login" %}">Log-in again</a></p>
+
+    <div id="wrapper"  style="background-color: #78909c;">
+
+
+            <div class="row" style="background-color: #78909c;">
+                  <div class="col-md-12">
+                       <div class="card" style="text-align: center">
+                            <div class="card-content">
+                                <div class="alert alert-success">
+                                        <strong>LOGGED OUT<br></strong> You have been successfully logged out.
+                                </div>
+
+                            </div>
+
+                           <div class="card-action">
+                               <a class="waves-effect waves-light btn-large" href="{% url "login" %}">Log in again</a>
+                            </div>
+                       </div>
+                  </div>
+            </div>
+
+    </div>
+
 {% endblock %}
