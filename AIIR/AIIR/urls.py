@@ -22,11 +22,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
      url(r'^admin/', admin.site.urls),
-<<<<<<< HEAD
-     url(r'^Brutforce/', include('Brutfoce.urls')),
-=======
      url(r'', include('Brutfoce.urls')),
->>>>>>> refs/remotes/origin/Django+Bootstrap
 ]
 
 if settings.DEBUG:
