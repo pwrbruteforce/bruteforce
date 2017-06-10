@@ -4,13 +4,20 @@ from django.contrib.auth import authenticate, login
 from .forms import LoginForm, UserRegistrationForm
 from django.contrib.auth.decorators import login_required
 
+
 @login_required
 def index(request):
     return render(request, "Brutforce/index.html")
+@login_required
+def history(request):
+    return render(request, "Brutforce/history.html")
+@login_required
+def tasks(request):
+    return render(request, "Brutforce/tasks.html")
+@login_required
+def profil(request):
+    return render(request, "Brutforce/profil.html")
 
-
-def charts(request):
-    return render(request, "Brutforce/charts.html")
 
 def user_login(request):
     if request.method == 'POST':
