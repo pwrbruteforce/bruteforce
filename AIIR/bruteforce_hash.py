@@ -52,9 +52,7 @@ elif (int(sys.argv[2]) == 7):
     dict_list = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 else :
     dict_list = ''
-    
-#stworzenie listy przechowującej wszystkie kombinacje słownika
-complete_list = []
+
 
 #zamiana zadanego hasha na małe litery (ponieważ funkcja MD5_hash generuje hashe z małymi literami)
 hash_str = str(sys.argv[1]).lower()
