@@ -1,13 +1,35 @@
 {% extends "base.html" %}
 
-{% block title %}Create an account{% endblock %}
-
 {% block content %}
-    <h1>Create an account</h1>
-    <p>Sing up using the folowing form:</p>
-    <form acction="." method="post">
-        {{ user_form.as_p }}
-        {% csrf_token %}
-    <p><input type="submit" value="Create my account"></p>
-    </form>
+
+    <div id="wrapper"  style="background-color: #78909c;">
+
+
+            <div class="row" style="background-color: #78909c; width:80%; padding-left: 20%; padding-top: 0.5%;">
+                  <div class="col-md-12">
+                       <div class="card" style="text-align: center">
+                            <div class="card-content">
+                                <div class="alert alert-success">
+                                    <strong>REGISTER<br></strong>
+                                    <p>Create an account.</p>
+                                    <p>Sing up using the following form:</p>
+                                </div>
+
+                            </div>
+
+                           <div class="card-content" style="padding-left: 30%;">
+
+                               <form acction="." method="post" style="width: 60%;">
+                               {{ user_form.as_p }}
+                               {% csrf_token %}
+                               <p><input type="submit" class="waves-effect waves-light btn-large" value="Create my account"></p>
+                               </form>
+
+                           </div>
+                       </div>
+                  </div>
+            </div>
+
+    </div>
 {% endblock %}
+

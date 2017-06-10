@@ -1,22 +1,41 @@
 {% extends "base.html" %}
 
-{% block title %}LOG-IN{% endblock %}
-
 {% block content %}
-    <h1>Log-in</h1>
-    {% if form.errors %}
-        <p>Yout username and password did't match. Try again...</p>
-    {% else %}
-        <p>Use following form to log-in</p>
-        <p>If you don't have an account <a href="{% url "register" %}">register here</a></p>
-    {% endif %}
-    <div class="login-form">
 
-        <form action="{% url "login" %}" method="post">
-            {{ form.as_p }}
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{{ next }}"/>
-            <p><input type="submit" value="Log-in"/></p>
-        </form>
+    <div id="wrapper"  style="background-color: #78909c;">
+
+
+            <div class="row" style="background-color: #78909c; width:80%; padding-left: 25%; padding-top: 10%;">
+                  <div class="col-md-12">
+                       <div class="card" style="text-align: center">
+                            <div class="card-content">
+                                <div class="alert alert-success">
+                                    <strong>LOG IN<br></strong>
+
+                                    {% if form.errors %}
+                                    <p>Your username and password did't match. Try again...</p>
+                                    {% else %}
+                                    <p>Use following form to log in.</p>
+                                    <p>If you don't have an account <a href="{% url "register" %}">register here</a></p>
+                                    {% endif %}
+
+
+                                </div>
+
+                            </div>
+
+                           <div class="card-content" style="padding-left: 30%;">
+
+                                  <form action="{% url "login" %}" method="post"  style="width: 60%;">
+                                    {{ form.as_p }}
+                                    {% csrf_token %}
+                                    <input type="hidden" name="next" value="{{ next }}"/>
+                                    <p><input type="submit" class="waves-effect waves-light btn-large" value="Log in" /></p>
+                                  </form>
+                           </div>
+                       </div>
+                  </div>
+            </div>
+
     </div>
 {% endblock %}

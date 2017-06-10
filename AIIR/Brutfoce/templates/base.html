@@ -2,32 +2,33 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brute Force</title>
+
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<link href="{% static "assets/materialize/css/materialize.min.css" %}" rel="stylesheet" /> <!--"media="screen,projection" /> -->
+    <!-- Bootstrap Styles-->
+    <link href="{% static "assets/css/bootstrap.css" %}" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="{% static "assets/css/font-awesome.css" %}" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    <link href="{% static "assets/js/morris/morris-0.4.3.min.css" %}" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="{% static "assets/css/custom-styles.css" %}" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="{% static "assets/js/Lightweight-Chart/cssCharts.css" %}" >
+
     <title>{% block title %}{% endblock %}</title>
-    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-    <link href="{% static "bootstrap-3.3.7-dist/css/bootstrap.css" %}" rel="stylesheet">
+
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
 </head>
-<body>
-    <div class="modal-header">
-        <span class=" text-center h3"></span>
+<body  style="background-color: #78909c;">
 
-        <span class="h4">
-        {% if request.user.is_authenticated %}
-            Hello {{ request.user.first_name }} here you can  <a href="{% url "logout" %}">Logout</a>
-        {% else %}
-            <a href="{% url "login" %}">Log-in View</a>
-        {% endif %}
-        </span>
+ {% block content %}
+ {% endblock %}
 
-        {% if request.user.is_authenticated %}
-        <ul class="h4">
-            <li {% if section == "dashboard" %}class="selected"{% endif %}><a href="{% url "dashboard" %}">Dashboard</a></li>
-        </ul>
-        {% endif %}
-
-    </div>
-    <div class="modal-content text-center">
-        {% block content %}
-        {% endblock %}
-    </div>
 </body>
 </html>

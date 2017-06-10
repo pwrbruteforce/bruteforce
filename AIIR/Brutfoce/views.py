@@ -4,6 +4,13 @@ from django.contrib.auth import authenticate, login
 from .forms import LoginForm, UserRegistrationForm
 from django.contrib.auth.decorators import login_required
 
+@login_required
+def index(request):
+    return render(request, "Brutforce/index.html")
+
+
+def charts(request):
+    return render(request, "Brutforce/charts.html")
 
 def user_login(request):
     if request.method == 'POST':
@@ -39,8 +46,3 @@ def register(request):
     else:
         user_form = UserRegistrationForm()
     return render(request, 'Brutforce/register.html', {'user_form': user_form})
-
-
-@login_required
-def dashboard(request):
-    return render(request, 'Brutforce/dashboard.html', {'section': 'dashboard'})

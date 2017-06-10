@@ -3,7 +3,8 @@ from . import views
 
 
 urlpatterns = (
-    url(r'^$', views.dashboard, name='dashboard'),
+    url(r'^$', views.index, name='index'),
+    url(r'^$', views.charts, name='charts'),
     url(r'^register/$', views.register, name='register'),
     #login/logout
     url('^', include('django.contrib.auth.urls')),
