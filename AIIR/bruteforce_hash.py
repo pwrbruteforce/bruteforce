@@ -59,17 +59,10 @@ complete_list = []
 #zamiana zadanego hasha na małe litery (ponieważ funkcja MD5_hash generuje hashe z małymi literami)
 hash_str = str(sys.argv[1]).lower()
 
-#wypełnienie listy przechowującej kombinacje słownika
-for current in range(int(sys.argv[3])):
-    a = [i for i in dict_list]
-    for y in range(current):
-        a = [x+i for i in dict_list for x in a]
-    complete_list = complete_list+a
-
-#pętla szukająca hasła na podstawie zadanego hasha i listy kombinacji słownika 
-for c in range(len(complete_list)):
-    out = Compare(str(complete_list[c]), hash_str)
-    if out:
-        break
-    #print ('haslo %s' %complete_list[c])
-    
+for len in range(int(sys.argv[3])):
+    list = itertools.product(dict_list, repeat=len+1)
+    for item in list:
+        item = ''.join(item)
+        out = Compare(str(item), hash_str)
+        if out:
+            break
