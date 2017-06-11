@@ -8,9 +8,8 @@ urlpatterns = (
 ###
     url(r'^$', views.index, name='index'),
     url(r'^index/$', views.index, name='index'),
-    url(r'^profil/$', views.profil, name='profil'),
+    url(r'^profil/$', views.get_info, name='profil'),
     url(r'^tasks/$', views.tasks, name='tasks'),
     url(r'^history/$', views.history, name='history'),
     url(r'^register/$', views.register, name='register'),
-
 )

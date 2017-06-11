@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils import timezone
 from django.conf import settings
 from django.contrib.auth.models import User
 
@@ -7,14 +6,8 @@ from django.contrib.auth.models import User
 class User(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL)
     date_of_birth = models.DateField(blank=True, null=True)
-   # photo = models.ImageField(upload_to='user/%Y/%m/%d', blank=True)
 
-    def __str__(self):
-        return 'Profile for user {} '.format(self.user.username)
 
-class PublishedManager(models.Manager):
-    def get_querysets(self):
-        return super(PublishedManager, self).get_queryset().filter(status='published')
 
 class Task(models.Model):
 
@@ -47,15 +40,9 @@ class Task(models.Model):
     dictionary = models.PositiveSmallIntegerField(choices=DICTIONARY_CHOICES, default=2)
     max_password_len = models.IntegerField(default=8)
 
-
-    objects = models.Manager()
-    published = PublishedManager()
-
     class Meta:
         ordering = ('-created',)
 
-    def __self__(self):
-        return self.author
 
 
 
