@@ -54,6 +54,9 @@ elif (int(sys.argv[2]) == 7):
     dict_list = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 else :
     dict_list = ''
+    
+#stworzenie listy przechowującej wszystkie kombinacje słownika
+complete_list = []
 
 #stworzenie listy przechowującej wszystkie kombinacje słownika
 complete_list = []
@@ -70,6 +73,16 @@ for current in range(int(sys.argv[3])):
     #print ("!! %s !!" %a)
     complete_list = complete_list+a
 
+<<<<<<< HEAD
+#wypełnienie listy przechowującej kombinacje słownika
+for current in range(int(sys.argv[3])):
+    a = [i for i in dict_list]
+    for y in range(current):
+        a = [x+i for i in dict_list for x in a]
+    complete_list = complete_list+a
+
+=======
+>>>>>>> refs/remotes/origin/rejestracja
 #pętla szukająca hasła na podstawie zadanego hasha i listy kombinacji słownika 
 for c in range(len(complete_list)):
     out = Compare(str(complete_list[c]), hash_str)
