@@ -7,16 +7,14 @@
 </head>
 <body>
 {% block content %}
-
-{% if new_test %}
-    <h1>Add New Test</h1>
-        <h2>Add a new test</h2>
-        <form action="." method="post">
-            {{ test_form.as_p }}
-            {% csrf_token %}
-            <p><input type="Submit" value="Add new test"></p>
-        </form>
-    {% endif %}
+    <h1>New Test</h1><br><br>
+    <form action="/index/" method="POST" >
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{form.dictionary}}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
 {% endblock %}
 </body>
 </html>
+

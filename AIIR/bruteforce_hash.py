@@ -13,11 +13,9 @@
 #               6 - cyfry i małe litery
 #               7 - cyfry i duże litery
 #       3: maksymalna długość hasła
-#       4: wycinek słownika
-
-        #potem dopiszę żeby dzielił sobie sam listę
 #
-#   Przykładowe uruchomienie : python bruteforce_hash.py  06c030da77d4399528f1b6c3fbc0bc79 6 4 abcd
+#
+#   Przykładowe uruchomienie : python bruteforce_hash.py  06c030da77d4399528f1b6c3fbc0bc79 6 4
 
 
 import sys
@@ -54,20 +52,18 @@ elif (int(sys.argv[2]) == 7):
     dict_list = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 else :
     dict_list = ''
-
+    
 #stworzenie listy przechowującej wszystkie kombinacje słownika
 complete_list = []
 
 #zamiana zadanego hasha na małe litery (ponieważ funkcja MD5_hash generuje hashe z małymi literami)
 hash_str = str(sys.argv[1]).lower()
-key_list = sys.argv[4]
 
 #wypełnienie listy przechowującej kombinacje słownika
 for current in range(int(sys.argv[3])):
-    a = [i for i in key_list]
+    a = [i for i in dict_list]
     for y in range(current):
         a = [x+i for i in dict_list for x in a]
-    #print ("!! %s !!" %a)
     complete_list = complete_list+a
 
 #pętla szukająca hasła na podstawie zadanego hasha i listy kombinacji słownika 
@@ -76,3 +72,4 @@ for c in range(len(complete_list)):
     if out:
         break
     #print ('haslo %s' %complete_list[c])
+    
