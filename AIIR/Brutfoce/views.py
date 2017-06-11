@@ -22,17 +22,14 @@ def history(request):
 
 @login_required
 def tasks(request):
-    if request.method == 'POST':
-        form = TestForm(request.POST)
+        form = TestForm(request.POST or None)
         if form.is_valid():
-            new_task = form.save(commit=False)
-            new_task.author = request.user
-            new_task.published_date = timezone.now()
-            new_task.save()
-            return redirect('index', pk = new_task.author)
-    else:
-        form = TestForm()
-    return render(request, 'Brutforce/tasks.html', {'form': form})
+            instance = form.save(commit=False)
+            instance.save()
+        context = {
+            "formset": form
+        }
+        return render(request, "Brutforce/tasks.html", context)
 
 @login_required
 def profil(request):

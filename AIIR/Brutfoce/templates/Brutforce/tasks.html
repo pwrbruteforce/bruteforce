@@ -8,11 +8,10 @@
 <body>
 {% block content %}
     <h1>New Test</h1><br><br>
-    <form action="/index/" method="POST" >
+    <form action="/index/" method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        {{form.dictionary}}
-        <button type="submit" class="save btn btn-default">Save</button>
+        {{ formset.as_p }}
+        <input type='submit' value="Submit">
     </form>
 {% endblock %}
 </body>
