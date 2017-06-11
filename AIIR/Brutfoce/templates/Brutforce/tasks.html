@@ -7,10 +7,11 @@
 </head>
 <body>
 {% block content %}
-    <h1>New Test</h1><br><br>
-    <form action="/index/" method="POST">
+    <h1>{{ title }}</h1><br><br>
+
+    <form action="/tasks/" method="POST">
         {% csrf_token %}
-        {{ formset.as_p }}
+        {{ form.as_p }}
         <input type='submit' value="Submit">
     </form>
 {% endblock %}

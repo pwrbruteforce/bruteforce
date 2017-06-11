@@ -7,7 +7,14 @@
 </head>
 <body>
 {% block content %}
-    <h1>PROFIL</h1>
+    <h1>Profile of {{ user }}</h1>
+    <h4>Yout tests:</h4>
+    <table class="table">
+        <tr><td>Autor:</td> , <td>Dictionary:</td> <td>Status:</td> <td>Date of Creation:</td> <td>Hash Code:</td></tr>
+    {% for instance in queryset %}
+        <tr><td>{{ instance.author }}</td> , <td>{{ instance.dictionary }}</td> <td>{{ instance.status }}</td> <td>{{ instance.created }}</td> <td>{{ instance.hash }}</td></tr>
+    {% endfor %}
+    </table>
 {% endblock %}
 </body>
 </html>

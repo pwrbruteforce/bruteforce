@@ -1,16 +1,24 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
-from django.utils import timezone
+
 
 from .forms import LoginForm, UserRegistrationForm, TestForm
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect
-
+from Brutfoce.models import Task
 
 
 def login(request):
     return render(request, "Brutforce/login.html")
+
+@login_required
+def get_info(request):
+    if request.user.is_authenticated():
+        queryset = Task.objects.all().filter(author = request.user)
+        context = {
+            "queryset": queryset
+        }
+    return render(request,"Brutforce/profil.html", context)
 
 @login_required
 def index(request):
@@ -22,14 +30,20 @@ def history(request):
 
 @login_required
 def tasks(request):
-        form = TestForm(request.POST or None)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.save()
+    title = "Her you can add new Task:"
+    form = TestForm(request.POST or None)
+    context = {
+        "title" : title,
+        "form" : form
+    }
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.author = request.user
+        instance.save()
         context = {
-            "formset": form
+            "title" : "You just add new task!"
         }
-        return render(request, "Brutforce/tasks.html", context)
+    return render(request, "Brutforce/tasks.html", context)
 
 @login_required
 def profil(request):
@@ -53,14 +67,6 @@ def register(request):
         user_form = UserRegistrationForm()
     return render(request, 'Brutforce/register.html', {'user_form': user_form})
 
-
-'''@login_required
-def task_new(request):
-    form = TestForm()
-    return render(request, 'Brutforce/test_new.html', {'form': form})
-'''
-
-
 def user_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -77,3 +83,4 @@ def user_login(request):
     else:
         form = LoginForm()
     return render(request, 'Brutforce/login.html', {'form': form})
+
