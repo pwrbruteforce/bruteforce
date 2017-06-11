@@ -1,8 +1,11 @@
+from msilib.schema import ListView
+
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import authenticate, login
-from .forms import LoginForm, UserRegistrationForm
+from .forms import LoginForm, UserRegistrationForm, TestForm
 from django.contrib.auth.decorators import login_required
+from .models import Task
 
 
 @login_required
@@ -53,3 +56,6 @@ def register(request):
     else:
         user_form = UserRegistrationForm()
     return render(request, 'Brutforce/register.html', {'user_form': user_form})
+
+
+

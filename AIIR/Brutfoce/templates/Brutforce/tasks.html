@@ -7,7 +7,16 @@
 </head>
 <body>
 {% block content %}
-    <h1>CHARTS- Cos tutaj trzeba dodac np: Pan da 3 :3</h1>
+
+{% if new_test %}
+    <h1>Add New Test</h1>
+        <h2>Add a new test</h2>
+        <form action="." method="post">
+            {{ test_form.as_p }}
+            {% csrf_token %}
+            <p><input type="Submit" value="Add new test"></p>
+        </form>
+    {% endif %}
 {% endblock %}
 </body>
 </html>
