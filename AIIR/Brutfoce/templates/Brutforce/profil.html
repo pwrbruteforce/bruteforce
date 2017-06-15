@@ -7,14 +7,47 @@
 </head>
 <body>
 {% block content %}
-    <h1>Profile of {{ user }}</h1>
-    <h4>Yout tests:</h4>
-    <table class="table">
-        <tr><td>Autor:</td> , <td>Dictionary:</td> <td>Status:</td> <td>Date of Creation:</td> <td>Hash Code:</td></tr>
-    {% for instance in queryset %}
-        <tr><td>{{ instance.author }}</td> , <td>{{ instance.dictionary }}</td> <td>{{ instance.status }}</td> <td>{{ instance.created }}</td> <td>{{ instance.hash }}</td></tr>
-    {% endfor %}
-    </table>
+		  <div class="header">
+                        <h1 class="page-header">
+                            Profile of {{ user }}
+                        </h1>
+          </div>
+         <div class="row">
+             <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-action">
+                            Your tests:
+                        </div>
+                        <div class="card-content">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Autor:</th>
+                                                <th>Dictionary:</th>
+                                                <th>Status:</th>
+                                                <th>Date of Creation:</th>
+                                                <th>Hash Code:</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for instance in queryset %}
+                                                <tr>
+                                                    <td>{{ instance.author }}</td>
+                                                    <td>{{ instance.dictionary }}</td>
+                                                    <td>{{ instance.status }}</td>
+                                                    <td>{{ instance.created }}</td>
+                                                    <td>{{ instance.hash }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                        </div>
+                    </div>
+             </div>
+         </div>
+
 {% endblock %}
 </body>
 </html>

@@ -1,3 +1,4 @@
+# coding=utf-8
 from django import forms
 from .models import Task
 from django.contrib.auth.models import User
@@ -5,12 +6,13 @@ from django.contrib.auth.models import User
 DICTIONARY_CHOICES = (
         (1, 'Wszystkie'),
         (2, 'Cyfry'),
-        (3, 'Male_litery'),
-        (4, 'Duze_litery'),
-        (5, 'Wszystkie_litery'),
-        (6, 'Male_litery_Cyfry'),
-        (7, 'Duze_litery_Cyfry'),
+        (3, 'Małe litery'),
+        (4, 'Duże litery'),
+        (5, 'Wszystkie litery'),
+        (6, 'Małe litery i cyfry'),
+        (7, 'Duże litery i cyfry'),
     )
+
 
 class LoginForm(forms.Form):
     username = forms.CharField()
@@ -34,6 +36,7 @@ class UserRegistrationForm(forms.ModelForm):
             raise forms.ValidationError('Password doesn\'t match.')
         return cd['password2']
 
+
 class TestForm(forms.ModelForm):
 
     hash = forms.CharField(label='hash', required=True, max_length=32, min_length=32)
@@ -41,5 +44,5 @@ class TestForm(forms.ModelForm):
 
     class Meta:
         model = Task
-        fields = ('discription', 'hash', 'max_password_len',)
+        fields = ('description', 'hash', 'max_password_len',)
 

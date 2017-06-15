@@ -1,6 +1,7 @@
 import sys
 import hashlib
 
+
 class BruteForce(object):
     """Container contains functions for finding hash matching with given hash."""
 
