@@ -1,4 +1,3 @@
-import sys
 import hashlib
 
 
@@ -43,7 +42,7 @@ class BruteForce(object):
                     yield sub_password + letter
 
     def _MD5_hash(self,  h_str ):
-        md5h = hashlib.sha1()
+        md5h = hashlib.md5()
         md5h.update(h_str.encode('utf-8'))
         return md5h.hexdigest()
 

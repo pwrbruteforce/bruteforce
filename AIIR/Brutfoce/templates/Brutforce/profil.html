@@ -23,21 +23,30 @@
                                     <table class="table table-striped table-bordered table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Autor:</th>
-                                                <th>Dictionary:</th>
-                                                <th>Status:</th>
-                                                <th>Date of Creation:</th>
-                                                <th>Hash Code:</th>
+                                                <th>Status</th>
+                                                <th>Date of Creation</th>
+                                                <th>Input password</th>
+                                                <th>Dictionary</th>
+                                                <th>Hash Code</th>
+                                                <th>Action</th>
+                                                <th>Output password</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            {% for instance in queryset %}
+
+                                           {% for instance in queryset %}
                                                 <tr>
-                                                    <td>{{ instance.author }}</td>
-                                                    <td>{{ instance.dictionary }}</td>
-                                                    <td>{{ instance.status }}</td>
+                                                    <td>{{ instance.status}}</td>
                                                     <td>{{ instance.created }}</td>
+                                                    <td>{{ instance.input_password }}</td>
+                                                    <td>{{ instance.get_dictionary_display }}</td>
                                                     <td>{{ instance.hash }}</td>
+                                                    <td>
+                                                         <form action="{% url "profile" %}" method="post">
+                                                            {% csrf_token %}
+                                                            <input type="submit" name="{{ instance.id }}" class="waves-effect waves-light btn" value="Start task">
+                                                         </form>
+                                                    </td>
+                                                    <td>{{ instance.output_password }}</td>
                                                 </tr>
                                             {% endfor %}
                                         </tbody>

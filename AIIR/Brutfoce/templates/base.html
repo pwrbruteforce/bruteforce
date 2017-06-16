@@ -95,8 +95,8 @@
                     <li class="{% if request.resolver_match.url_name == "index" %}active{% endif %}">
                         <a class=" waves-effect waves-dark" href="{% url "index" %}"><i class="fa fa-dashboard"></i> Dashboard</a>
                     </li>
-					<li class="{% if request.resolver_match.url_name == "profil" %}active{% endif %}">
-                        <a href="{% url "profil" %}" class=" waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i> Profil</a>
+					<li class="{% if request.resolver_match.url_name == "profile" %}active{% endif %}">
+                        <a href="{% url "profile" %}" class=" waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i> Profile</a>
                     </li>
                     <li class="{% if request.resolver_match.url_name == "history" %}active{% endif %}">
                         <a href="{% url "history" %}" class=" waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i> History</a>

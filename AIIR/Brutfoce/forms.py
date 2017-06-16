@@ -3,6 +3,8 @@ from django import forms
 from .models import Task
 from django.contrib.auth.models import User
 
+from django import forms
+
 DICTIONARY_CHOICES = (
         (1, 'Wszystkie'),
         (2, 'Cyfry'),
@@ -39,10 +41,10 @@ class UserRegistrationForm(forms.ModelForm):
 
 class TestForm(forms.ModelForm):
 
-    hash = forms.CharField(label='hash', required=True, max_length=32, min_length=32)
+    input_password = forms.CharField(label='input_password', required=True, max_length=32)
     dictionary = forms.ChoiceField(required=True, choices=DICTIONARY_CHOICES, initial=2)
 
     class Meta:
         model = Task
-        fields = ('description', 'hash', 'max_password_len',)
+        fields = ('description', 'input_password', 'max_password_len', 'dictionary')
 

@@ -1,0 +1,24 @@
+{% extends "base0.html" %}
+
+{% block content %}
+
+    <div id="wrapper"  style="background-color: #78909c;">
+
+
+            <div class="row" style="background-color: #78909c; width:80%; padding-left: 25%; padding-top: 10%;">
+                  <div class="col-md-12">
+                       <div class="card" style="text-align: center">
+                            <div class="card-content">
+                                <div class="alert alert-success">
+                                    <strong>TASK ADDED<br></strong>
+                                    <p>You just added new task! Now you can view and run it from <a href="{% url "profile" %}">your profile.</a></p>
+
+                                </div>
+
+                            </div>
+                       </div>
+                  </div>
+            </div>
+
+    </div>
+{% endblock %}
